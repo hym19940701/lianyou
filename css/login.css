@@ -1,0 +1,187 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    z-index:10;
+    height: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.inline-block {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.transition {
+    transition: all 0.5s ease-in-out;
+}
+
+.home {
+    background: url(../static/img/bg1.jpg) no-repeat center top;
+    background-size: cover;
+    transition: all 0.7s ease 0s;
+    padding-top: 56px;
+}
+
+.height-full {
+    height: 100%;
+}
+
+.home .container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.container {
+    height: 50px;
+}
+
+.pull-right a {
+    display: inline-block;
+    padding: 10px;
+    margin-right: 15px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.pull-right a:hover{
+    background-color:orange;
+    color:black;
+}
+
+.pull-right button {   
+   background-color:#999;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pull-right button:hover{
+    background-color:#ccc;
+}
+
+.login {
+    display:none;
+    width: 450px;
+    height: 300px;
+    left: 50%;
+    margin: -150px 0 0 -225px;
+    padding: 30px 30px 15px;
+    position: absolute;
+    top: 50%;
+    background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0 padding-box;
+    border: 1px solid white;
+    border-radius: 10px;
+    z-index:11;
+}
+
+    .login .top-item {
+        width: 100%;
+        min-height: 30px;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+        .login .top-item button {
+            background-color: white;
+            color: #ccc;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .login .top-item button:hover {
+                color: #666;
+            }
+
+    .login .form-group:not(.radio):not(.row) {
+        width: 388px;
+        height: 35px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .login .form-group .input-group {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .login .form-group .input-group-addon {
+        display: inline-block;
+        width: 50px;
+        height: 100%;
+    }
+
+    .login .form-group .input-group input {
+        position: absolute;
+        display: inline-block;
+        border: none;
+        height: 100%;
+        outline: none;
+    }
+
+    .login .row {
+        width: 100%;
+        min-height: 20px;
+        margin: 15px 0;
+    }
+
+        .login .row .half {
+            display: inline-block;
+            width: 50%;
+        }
+
+        .login .row .checkbox {
+            color: #333;
+            cursor: pointer;
+        }
+
+            .login .row .checkbox:hover {
+                color: #52e2c0;
+            }
+
+        .login .row .btn-submit, .login .row .regist {
+            width: 175px;
+            height: 35px;
+            background-color: #39a453;
+            border: 1px solid #39a453;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login .row .regist {
+            background-color: lightgrey;
+            color: black;
+            text-align: center;
+            line-height: 32px;
+            border: 1px solid lightgrey;
+            text-decoration: none;
+        }
+
+        .login .row .btn-submit:hover {
+            background-color: #349fff;
+            border-color: #349fff;
+        }
+
+        .login .row .regist:hover {
+            background-color: #aaa;
+            border-color: #aaa;
+        }

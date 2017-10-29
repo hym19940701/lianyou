@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <link href="static/reset.css" rel="stylesheet" />
+  <link href="css/login.css" rel="stylesheet" />
+</head>
+<body>
+<div class="home height-full">
+  <div class="container">
+    <div class="pull-left left">
+      <a href="#">
+        <img src="static/img/logogary.png" />
+      </a>
+    </div>
+    <div class="pull-right right">
+      <a href="#" class="transition">
+        <i class="triangle"></i>
+        返回首页
+      </a>
+      <button class="top-btn-login transition">登录</button>
+    </div>
+  </div>
+  <%--login--%>
+  <div class="login">
+    <div class="top-item">
+      <span>登录</span>
+      <button class="right btn-login-close"><span>×</span></button>
+    </div>
+    <!--<%&#45;&#45;应为form练习ajax改为div&#45;&#45;%>-->
+    <div>
+      <div class="form-group radio">
+        <div class="inline-block">
+          <input type="radio" name="usertype" value="1" checked="checked" id="r4" />
+          <label for="r4">
+            <span></span>
+            餐厅
+          </label>
+        </div>
+        <div class="inline-block">
+          <input type="radio" name="usertype" value="2" id="r5" />
+          <label for="r5">
+            <span></span>
+            供应商
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon fl">
+            <i class="jauz jauz-user"></i>
+          </div>
+          <input type="text" name="username" class="fl" id="username" placeholder="用户名"  value=""/>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon fl">
+            <i class="jauz jauz-user"></i>
+          </div>
+          <input type="text" name="username" class="fl" id="pwd" placeholder="密码" />
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="half left">
+          <div class="checkbox">
+            <input type="checkbox" id="remember" name="remember" value=" " />
+            <label for="remember">
+              <span></span>
+              记住密码
+            </label>
+          </div>
+        </div>
+        <div class="half right">
+          <div class="checkbox">
+            <a href="#" class="right">忘记密码？</a>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="half left">
+          <button type="submit" name="dosubmit" class="btn-submit  transition"id="btn-submit">登录</button>
+        </div>
+        <div class="half right">
+          <a href="#" class="regist right transition">注册</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="static/jQuery%20v3.2.1.min.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

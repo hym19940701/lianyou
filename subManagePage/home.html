@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <link href="../static/Bootstrap%20v3.3.7.css" rel="stylesheet"/>
+  <link href="../static/reset.css" rel="stylesheet"/>
+  <style>
+    /**{
+        background-color:rgba(0,0,0,.1);
+    }*/
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      width: 100%;
+      height: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .clear-float {
+      clear: both;
+    }
+
+    .bg-white {
+      background-color: white;
+    }
+
+    .template-contant-container .warn {
+    }
+
+    .template-contant-container .warn .warn-icon {
+      display: block;
+      width: 16px;
+      height: 16px;
+      padding: 20px 20px 0 0;
+    }
+
+    .template-contant-container .warn .warn-icon img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .template-content-widget {
+      margin: 50px 65px;
+      padding: 15px 0;
+      border-radius: 10px;
+    }
+
+    .template-content-widget .user-message h4 {
+      font-size: 20px;
+      margin: 26px 0;
+    }
+
+    .template-content-widget .list-inline li {
+      float: left;
+      padding: 10px 0;
+    }
+
+    .template-content-widget .list-inline li a {
+      padding: 0 10px;
+      font-size: 14px;
+      color: black;
+    }
+
+    .template-content-widget .list-inline li:first-child {
+      border-bottom: 2px solid #2CA9ED;
+    }
+
+    .template-content-widget .list-inline li:first-child a {
+      border-right: 1px solid #ccc;
+      color: #2CA9ED;
+    }
+
+    .template-content-widget .list-bottom-border {
+      display: block;
+      /*width:100%;*/
+      height: 1px;
+      background-color: #ccc;
+    }
+
+    .user-img {
+      height: 150px;
+      width: 150px;
+      border-radius: 5%;
+      overflow: hidden;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    }
+
+    .user-img img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .suplier-index {
+      padding: 20px 0 0 150px;
+    }
+
+    .suplier-index-link {
+      padding-top: 50px;
+    }
+
+    label {
+      border-right: 2px solid #ddd;
+      padding: 0 8%;
+      text-align: center;
+    }
+
+    label h2 {
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    label h4 {
+      font-size: 20px;
+      color: orange;
+    }
+
+    label h6 {
+      font-size: 14px;
+      color: #888;
+    }
+
+    label:last-child {
+      border: none;
+    }
+
+    label a {
+      color: #009FE9;
+    }
+
+    label a:hover {
+      color: #009FE9;
+    }
+
+    .panel {
+      margin: 0 30px;
+    }
+
+    .panel-body {
+      padding: 10px 0;
+    }
+
+    .panel-body .history {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .panel-body .history a {
+      padding-right: 60px;
+    }
+
+    .panel-body .btn-print {
+      text-align: center;
+    }
+
+    .panel-body .btn-print .btn {
+      margin: 15px 10px;
+      background-color: #6cb0fb;
+      color: white;
+      width: 95%;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row template-contant-container">
+    <div class="warn">
+      <i class="warn-icon">
+        <img src="../static/img/vectorgraph/warning.png"/>
+      </i>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="template-content-widget row bg-white">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <div class="col-lg-4 col-sm-5 col-xs-5 col-md-5">
+            <div class="user-img">
+              <img src="../static/img/vectorgraph/photography.png" alt="Alternate Text"/>
+            </div>
+          </div>
+          <div class="col-lg-8 col-sm-7 col-xs-7 col-md-7 user-message">
+            <h4 id="username">username
+              <small>(总管理员)</small>
+            </h4>
+            <h4>
+              <a href="#"><span></span>账号设置</a>
+            </h4>
+            <h5>
+              <small>您上次登录的时间为：</small>
+            </h5>
+          </div>
+        </div>
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 suplier-index">
+          <label>
+            <a href="#">
+              <h2>0</h2>
+              <h5>待确认</h5>
+            </a>
+          </label>
+          <label>
+            <a href="#">
+              <h2>0</h2>
+              <h5>新报价</h5>
+            </a>
+          </label>
+          <label>
+            <a href="#">
+              <h2>0</h2>
+              <h5>新客户</h5>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="template-content-widget row bg-white">
+        <ul class="list-inline col-md-12">
+          <li><a href="#">报价单订单</a></li>
+          <li><a href="#">食材库订单</a></li>
+        </ul>
+        <div class="list-bottom-border col-md-12"></div>
+        <div class="tab-content col-md-12">
+          <div class="suplier-index-link">
+            <label>
+              <a href="#">
+                <h2>0</h2>
+                <h5>新订单</h5>
+              </a>
+            </label>
+            <label>
+              <a href="#">
+                <h2>0</h2>
+                <h5>待发货</h5>
+              </a>
+            </label>
+            <label class="text-left">
+              <a href="#">
+                <h6>下次打印任务开始于:</h6>
+                <h4>你还未创建自动打印任务</h4>
+              </a>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row history">
+            <a href="#" class="col-xs-12 text-right"><u>查看历史打印任务</u></a>
+          </div>
+          <div class="row btn-print">
+            <div class="col-xs-12">
+              <button class="btn btn-blue">新增打印任务</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="../static/jQuery%20v3.2.1.min.js"></script>
+<script>
+  var test = /\=[\w\W]+/
+  console.log(test.exec(window.location.search))
+  console.log(test.exec('=关羽'))
+  var cilent = decodeURI(test.exec(window.location.search)[0].slice(1))
+  console.log(cilent)
+
+  $('#username').html(cilent)
+</script>
+</body>
+</html>

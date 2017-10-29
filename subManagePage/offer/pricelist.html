@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <link href="../../static/Bootstrap%20v3.3.7.css" rel="stylesheet" />
+  <link href="../../static/reset.css" rel="stylesheet" />
+  <style>
+    .pull-left{
+      float:left
+    }
+    .pull-right{
+      float:right;
+    }
+    .price-nav-page {
+      background-color: #37383a;
+    }
+    /*------搜索栏------*/
+    .contant-container .has-feedback {
+      position: relative;
+      width: 95%;
+      height: 40px;
+      margin: 25px 10px;
+      padding: 10px 20px;
+      border: 1px solid #6CB0FB;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .contant-container .has-feedback:hover {
+      box-shadow: 0 0 5px #6CB0FB;
+    }
+
+    .contant-container .has-feedback i {
+      position: absolute;
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      top: 6px;
+      left: 10px;
+    }
+
+    .contant-container .has-feedback i img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .contant-container .has-feedback input {
+      position: absolute;
+      display: inline-block;
+      width: 90%;
+      height: 25px;
+      color: white;
+      background-color: #37383a;
+      border: none;
+      outline: none;
+      top: 6px;
+      left: 50px;
+    }
+
+    .contant-container .has-feedback button {
+      position: absolute;
+      top: 50%;
+      margin-top: -17px;
+      right: 3px;
+      height: 34px;
+      width: 80px;
+      background-color: white;
+      border: 1px solid white;
+      border-radius: 16px;
+      color: #666;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .contant-container .has-feedback button:hover {
+      background-color: #39afff;
+      border-color: #39afff;
+      color: white;
+    }
+    /*------搜索栏------*/
+    /*------报价栏------*/
+    .col-xs-12{
+      padding:0;
+    }
+    .price-nav{
+      margin:100px 0;
+    }
+    .price-nav ul li{
+      display:block;
+      margin:1px 0;
+      padding:20px 10px;
+      font-size:18px;
+      background-color:#4f5052;
+      text-align:center;
+    }
+    .price-nav ul li:first-child{
+      background-color:#00a0ea;
+    }
+    .price-nav ul li a{
+      overflow:hidden;
+      color:white;
+    }
+    .price-nav ul li a div{
+      overflow:hidden;
+    }
+    .price-nav .navbar-fixed-bottom{
+      padding:20px 0;
+      font-size:14px;
+      background-color:#4f5052;
+
+    }
+    .price-nav .navbar-fixed-bottom a{
+      color:white;
+    }
+    .price-nav .navbar-fixed-bottom a i{
+      position:relative;
+      top:-2px;
+      display:inline-block;
+      width:21px;
+      height:21px;
+    }
+    .price-nav .navbar-fixed-bottom a i img{
+      width:100%;
+      height:100%;
+    }
+    /*------报价栏------*/
+  </style>
+</head>
+<body class="price-nav-page">
+<div class="container-fluid">
+  <div class="row contant-container">
+    <div class="col-xs-12 navbar-fixed-top">
+      <form action="#" method="post" class="search-form">
+        <div class="has-feedback">
+
+          <i>
+            <img src="../../static/img/vectorgraph/search-ccc.png" />
+          </i>
+          <input type="text" name="name" placeholder="请输入餐厅名..." />
+          <button>搜索</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-12">
+      <div class="price-nav">
+        <ul id="getul">
+          <li><a href="#">
+            <div class="pull-left">异口食粮</div>
+            <div><span class="pull-right">0</span></div>
+          </a></li>
+          <li><a href="#">
+            <div class="pull-left">潮粥荟</div>
+            <div><span class="pull-right">0</span></div>
+          </a></li>
+          <li><a href="#">
+            <div class="pull-left">金百万</div>
+            <div><span class="pull-right">0</span></div>
+          </a></li>
+          <li><a href="#">
+            <div class="pull-left">井格老灶火锅</div>
+            <div><span class="pull-right">0</span></div>
+          </a></li>
+          <li><a href="#">
+            <div class="pull-left">麦手艺</div>
+            <div><span class="pull-right">0</span></div>
+          </a></li>
+
+        </ul>
+        <div class="navbar-fixed-bottom text-center">
+          <a href="#">
+            客户管理
+            <i>
+              <img src="../../static/img/vectorgraph/arrow-right.png" /></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

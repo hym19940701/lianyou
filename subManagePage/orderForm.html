@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <link href="../static/reset.css" rel="stylesheet" />
+  <link href="../static/Bootstrap%20v3.3.7.css" rel="stylesheet" />
+  <style>
+    a:hover {
+      text-decoration: none;
+    }
+    /*------头部------*/
+    .top-nav-container {
+      background-color: #1f2124;
+      color: white;
+    }
+
+    .top-nav-container li {
+      float: left;
+      padding: 18.2px 35px;
+      border-top: 5px solid #1f2124;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .top-nav-container li:first-child {
+      border-top: 5px solid #349fff;
+      background-color: white;
+    }
+
+    .top-nav-container li:first-child a {
+      color: black;
+    }
+
+    .top-nav-container li:hover {
+      border-top-color: #349fff;
+      background-color: white;
+    }
+
+    .top-nav-container li:hover a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .top-nav-container li a {
+      color: white;
+    }
+
+    .top-nav-container .warn {
+      position: absolute;
+      right: 30px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .top-nav-container .warn img {
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+    }
+    /*------头部------*/
+    /*------搜索栏------*/
+    .contant-container .has-feedback {
+      position: relative;
+      width: 95%;
+      height: 40px;
+      margin: 25px 35px;
+      padding: 10px 20px;
+      border: 1px solid #6CB0FB;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .contant-container .has-feedback:hover {
+      box-shadow: 0 0 5px #6CB0FB;
+    }
+
+    .contant-container .has-feedback i {
+      position: absolute;
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      top: 6px;
+      left: 10px;
+    }
+
+    .contant-container .has-feedback i img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .contant-container .has-feedback input {
+      position: absolute;
+      display: inline-block;
+      width: 90%;
+      height: 25px;
+      border: none;
+      outline: none;
+      top: 6px;
+      left: 50px;
+    }
+
+    .contant-container .has-feedback button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 40px;
+      width: 200px;
+      border: none;
+      background-color: #6CB0FB;
+      color: white;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .contant-container .has-feedback button:hover {
+      background-color: #0e92ce;
+    }
+    /*------搜索栏------*/
+    /*------打印------*/
+    .btn-print {
+      float: right;
+      width: 90px;
+      height: 38px;
+      line-height: 28px;
+      margin: 5px 50px;
+      padding: 6px 12px;
+      color: white;
+      background-color: #6CB0FB;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .btn-print:hover {
+      color: black;
+    }
+    /*------打印------*/
+    /*------订单信息------*/
+    .nav-lis {
+      margin: 10px 0;
+    }
+
+    .nav-lis ul {
+      overflow: hidden;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .nav-lis ul li {
+      display: inline-block;
+      float: left;
+      padding: 10px 0;
+      font-size: 15px;
+    }
+
+    .nav-lis ul li:last-child {
+      float: right;
+      margin: 0 50px;
+    }
+
+    .nav-lis ul li:last-child i {
+      position: relative;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      top: -3px;
+      left: -8px;
+    }
+
+    .nav-lis ul li:last-child i img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .nav-lis ul li:first-child {
+      border-bottom: 2px solid #00a0e9;
+    }
+
+    .nav-lis ul li a {
+      color: black;
+      padding: 0 25px;
+    }
+
+    .nav-lis ul li:first-child a {
+      color: #00a0e9;
+    }
+
+    .nav-lis ul li:not(:last-child) a {
+      border-right: 1px solid #ccc;
+    }
+
+    .nav-lis ul li a:hover {
+      color: #00a0e9;
+    }
+
+    .nav-lis ul li a span {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row top-nav-container">
+    <ul>
+      <li><a href="#">我的订单</a></li>
+      <li><a href="#">已合并的订单</a></li>
+    </ul>
+    <div class="warn">
+      <img src="../static/img/vectorgraph/warning.png" />
+    </div>
+  </div>
+</div>
+<div class="row contant-container">
+  <div class="col-xs-12">
+    <form method="post" action="#">
+      <div class="has-feedback">
+        <i>
+          <img src="../static/img/vectorgraph/search.png" />
+
+        </i>
+        <input type="text" name="name" placeholder="请输入订单号查询..." />
+        <button>搜索</button>
+      </div>
+    </form>
+    <div class="col-xs-12">
+      <button class="btn-print btn-blue">打印/导出</button>
+    </div>
+    <div class="col-xs-12 nav-lis">
+      <ul>
+        <li><a href="#">待接单<span>0</span></a></li>
+        <li><a href="#">待发货<span>0</span></a></li>
+        <li><a href="#">待确认<span>0</span></a></li>
+        <li><a href="#">所有订单</a></li>
+        <li><a href="#"><i>
+          <img src="../static/img/vectorgraph/recycle.png" /></i>订单回收站</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

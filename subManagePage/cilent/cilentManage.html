@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <link href="../../static/Bootstrap%20v3.3.7.css" rel="stylesheet" />
+  <link href="../../static/reset.css" rel="stylesheet" />
+  <style>
+    a:hover {
+      text-decoration: none;
+    }
+    /*------头部------*/
+    .top-nav-container {
+      background-color: #1f2124;
+    }
+
+    .top-nav-container ul li {
+      display: inline-block;
+      float: left;
+      padding: 17px 30px;
+      color: white;
+      border-top: 8px solid #1f2124;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .top-nav-container ul li:first-child {
+      border-top: 8px solid #5ac3ff;
+    }
+
+    .top-nav-container ul li:hover {
+      background-color: white;
+      border-top: 8px solid #5ac3ff;
+    }
+
+    .top-nav-container ul li a {
+      font-size: 18px;
+      color: white;
+    }
+
+    .top-nav-container ul li:first-child a {
+      color: white;
+    }
+
+    .top-nav-container ul li:hover a {
+      color: black;
+    }
+
+    .top-nav-container .warn i {
+      position: absolute;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      top: 0;
+      right: 20px;
+    }
+
+    .top-nav-container .warn i img {
+      width: 100%;
+      height: 100%;
+    }
+    /*------头部------*/
+    /*------搜索栏------*/
+    .searchbar {
+      position:relative;
+      margin: 50px;
+      padding:8px 0;
+      border: 1px solid #6CB0FB;
+      border-radius: 30px;
+      overflow:hidden;
+    }
+    .searchbar:hover{
+      box-shadow:0 0 5px #6CB0FB;
+    }
+    .searchbar i{
+      display:inline-block;
+      width:20px;
+      height:20px;
+      margin-left:10px;
+    }
+    .searchbar i img{
+      width:100%;
+      height:100%;
+    }
+    .searchbar input{
+      width:90%;
+      border:none;
+      outline:none;
+    }
+    .searchbar button{
+      position:absolute;
+      display:inline-block;
+      height:45px;
+      width:60px;
+      right:0;
+      top:-3px;
+      color:white;
+      border:none;
+      background-color:#6CB0FB;
+    }
+    /*------搜索栏------*/
+    /*添加角色*/
+    .btn-addrole{
+      float:right;
+      wid
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row top-nav-container">
+    <ul>
+      <li><a href="#">角色管理</a></li>
+      <li><a href="#">用户管理</a></li>
+      <li><a href="#">组织管理</a></li>
+    </ul>
+    <div class="warn">
+      <i>
+        <img src="../../static/img/vectorgraph/warning.png" /></i>
+    </div>
+  </div>
+  <div class="row searchbar">
+    <i>
+      <img src="../../static/img/vectorgraph/search.png" />
+    </i>
+    <input type="text" name="name"  placeholder="请输入角色名称..." />
+    <button>搜索</button>
+  </div>
+  <div class="row btn-addrole">
+    <button>添加角色</button>
+  </div>
+</div>
+</body>
+
+</body>
+</html>
