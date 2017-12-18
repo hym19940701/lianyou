@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <link href="../static/Bootstrap%20v3.3.7.css" rel="stylesheet" />
+  <link href="../static/reset.css" rel="stylesheet" />
+  <style>
+    .padding-set {
+      padding: 0 0 15px 0;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+    /*------头部------*/
+
+    .top-nav-container {
+      background-color: #1f2124;
+      color: white;
+    }
+
+    .top-nav-container li {
+      float: left;
+      padding: 18.2px 35px;
+      border-top: 5px solid #1f2124;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .top-nav-container li:first-child {
+      border-top: 5px solid #349fff;
+      background-color: white;
+    }
+
+    .top-nav-container li:first-child a {
+      color: black;
+    }
+
+    .top-nav-container li:hover {
+      border-top-color: #349fff;
+      background-color: white;
+    }
+
+    .top-nav-container li:hover a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .top-nav-container li a {
+      color: white;
+    }
+
+    .top-nav-container .warn {
+      position: absolute;
+      right: 30px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .top-nav-container .warn img {
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+    }
+    /*------头部------*/
+    /*------内容区------*/
+
+    .content-container {
+      padding: 25px;
+    }
+
+    .content-container .user-logo {}
+
+    .content-container .pannl {
+      margin-top: 30px;
+    }
+    /*左侧*/
+
+    .content-container .col-xs-6 {
+      text-align: left;
+    }
+
+    input[type=text] {
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #555;
+      font-size: 14px;
+      line-height: 20px;
+      display: inline-block;
+      padding: 6px;
+      vertical-align: middle;
+      transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    }
+
+    .content-container .panel-heading {
+      padding: 15px;
+      background-color: #00a0e9;
+    }
+
+    .content-container .panel-heading h4 {
+      font-size: 20px;
+      font-weight: bolder;
+      color: white;
+    }
+
+    .content-container .panel-body .row {
+      padding: 15px;
+    }
+
+    .content-container .panel-body .row h5 {
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    .content-container .panel-body .input-group {
+      width: 90%;
+      height: 33.9px;
+    }
+
+    .content-container .panel-body .input-group input {
+      float: left;
+      width: 80%;
+      background-color: #eee;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+
+    .content-container .panel-body .input-group span {
+      display: inline-block;
+      float: left;
+      width: 20%;
+      height: 33.9px;
+      padding: 5px;
+      font-size: 15px;
+      line-height: 25px;
+      text-align: center;
+      color: white;
+      background-color: #00a0e9;
+    }
+
+    .content-container .panel-body .form-control {
+      width: 90%;
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+
+
+<body>
+  <form>
+    <div class="container-fluid">
+      <div class="row top-nav-container">
+        <ul>
+          <li>
+            <a href="#">基本信息设置</a>
+          </li>
+        </ul>
+        <div class="warn">
+          <i>
+            <img src="../static/img/vectorgraph/warning.png" />
+          </i>
+        </div>
+      </div>
+      <div class="row content-container">
+        <div class="col-xs-10">
+          <div class="row text-right">
+            <span>智能接单:</span>
+            <span>开启</span>
+            <label>
+              <input type="radio" name="name" value=" " />
+            </label>
+            <span>关闭</span>
+          </div>
+          <div class="row">
+            <div class="user-logo text-center">
+              <i>
+                <img src="#" alt="Alternate Text" />
+              </i>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>公司信息设置</h4>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-6 text-center">
+                    <div class="col-xs-3">
+                      <h5>供应商公司名称</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <input type="text" name="name" value=" 北京鲜食尚商贸有限公司" />
+                    </div>
+                  </div>
+                  <div class="col-xs-6 text-center">
+                    <div class="col-xs-3">
+                      <h5>修改密码</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <input type="text" name="name" value=" " />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 text-center">
+                    <div class="col-xs-3">
+                      <h5>公司简称</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <input type="text" name="name" value="鲜食尚" />
+                    </div>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="col-xs-3">
+                      <h5>公司地址</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <div class="col-xs-4">
+                        <select class="form-control" name="province" id="province">
+                          <option value="请选择">请选择</option>
+                          <option value="北京">北京</option>
+                          <option value="上海">上海</option>
+                          <option value="天津">天津</option>
+                          <option value="重庆">重庆</option>
+                        </select>
+                        <input type="hidden" name="province" class="province" value=" " />
+                      </div>
+                      <div class="col-xs-4">
+                        <select class="form-control" name="city" id="city">
+                          <option value="value">text</option>
+                        </select>
+                        <input type="hidden" name="city" class="city" value=" " />
+                      </div>
+                      <div class="col-xs-4">
+                        <select class="form-control" name="county" id="county">
+                          <option value="value">text</option>
+                        </select>
+                        <input type="hidden" name="county" class="county" value=" " />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="col-xs-3">
+                      <h5>公司LOGO</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <div class="input-group">
+                        <input type="text" name="name" value=" " />
+                        <span>选择文件</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="col-xs-3">
+                      <h5>详细地址</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <input type="text" name="name" value=" " />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="col-xs-3">
+                      <h5>公司电话</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <input type="text" name="name" value="010-61263025 " />
+                    </div>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="col-xs-3">
+                      <h5>联系人</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <input type="text" name="name" value=" " />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="col-xs-3">
+                      <h5>公司公告</h5>
+                    </div>
+                    <div class="col-xs-9">
+                      <textarea rows="4" class="form-control">content</textarea>
+                    </div>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="col-xs-12 padding-set">
+                      <div class="col-xs-3">
+                        <h5>联系电话</h5>
+                      </div>
+                      <div class="col-xs-9">
+                        <input type="text" name="name" value=" " />
+                      </div>
+                    </div>
+                    <div class="col-xs-12 padding-set">
+                      <div class="col-xs-3">
+                        <h5>联系邮箱</h5>
+                      </div>
+                      <div class="col-xs-9">
+                        <input type="text" name="name" value=" " />
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="voucher">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>经营许可设置</h4>
+              </div>
+              <div class="panel-body">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2"></div>
+      </div>
+    </div>
+  </form>
+</body>
+
+</html>

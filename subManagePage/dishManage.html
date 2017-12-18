@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../static/Bootstrap%20v3.3.7.css" rel="stylesheet" />
+    <link href="../static/reset.css" rel="stylesheet" />
+    <style>
+        a:hover {
+            text-decoration: none;
+        }
+        /*------头部------*/
+        .top-nav-container {
+            background-color: #1f2124;
+            color: white;
+        }
+
+            .top-nav-container li {
+                float: left;
+                padding: 18.2px 35px;
+                border-top: 5px solid #1f2124;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+
+                .top-nav-container li:first-child {
+                    border-top: 5px solid #349fff;
+                    background-color: white;
+                }
+
+                    .top-nav-container li:first-child a {
+                        color: black;
+                    }
+
+                .top-nav-container li:hover {
+                    border-top-color: #349fff;
+                    background-color: white;
+                }
+
+                    .top-nav-container li:hover a {
+                        color: black;
+                        text-decoration: none;
+                    }
+
+                .top-nav-container li a {
+                    color: white;
+                }
+
+            .top-nav-container .warn {
+                position: absolute;
+                right: 30px;
+                top: 5px;
+                width: 16px;
+                height: 16px;
+            }
+
+                .top-nav-container .warn img {
+                    width: 100%;
+                    height: 100%;
+                    z-index: 999;
+                }
+        /*------头部------*/
+        /*------中间部分------*/
+        .content-container {
+            margin-top: 30px;
+        }
+
+            .content-container .col-xs-12 {
+                margin-top: 20px;
+            }
+
+            .content-container .nav-list {
+                overflow: hidden;
+                padding: 0;
+                border-bottom: 2px solid #ccc;
+            }
+
+        .nav-list ul {
+            float: left;
+        }
+
+            .nav-list ul li {
+                display: inline-block;
+                padding: 15px 0;
+            }
+
+                .nav-list ul li:first-child {
+                    border-bottom: 2px solid #349fff;
+                }
+
+                .nav-list ul li a {
+                    padding: 0 20px;
+                    font-size: 18px;
+                }
+
+                .nav-list ul li:first-child a {
+                    border-right: 1px solid #ccc;
+                }
+
+        .nav-list .nav-list-btn > * {
+            display: inline-block;
+        }
+
+        .nav-list .nav-list-btn button {
+            width: 92px;
+            height: 41px;
+            padding: 10px;
+            color: white;
+            background-color: #349fff;
+        }
+
+        .content-container .dish-menu {
+            margin-top: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+            .content-container .dish-menu .circle {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background-color: #349fff;
+                border: 1px solid #349fff;
+                border-radius: 50%;
+            }
+
+            .content-container .dish-menu span {
+                line-height: 41px;
+            }
+
+            .content-container .dish-menu .btn {
+                display: inline-block;
+                padding: 10px;
+                margin: 2px;
+                text-align: center;
+                color: white;
+                background-color: #f18101;
+                border: 1px solid #c37a00;
+            }
+
+            .content-container .dish-menu .search-form {
+                display: inline-block;
+                width: 100%;
+                height: 40px;
+                position: relative;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                overflow: hidden;
+            }
+
+            .content-container .dish-menu i {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                margin-left: 10px;
+            }
+
+                .content-container .dish-menu i img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+            .content-container .dish-menu input {
+                width: 70%;
+                height: 100%;
+                border: none;
+                outline: none;
+            }
+
+            .content-container .dish-menu button {
+                position: absolute;
+                height: 100%;
+                top: 0;
+                right: -2px;
+                color: white;
+                background-color: #349fff;
+                border: none;
+                width: 20%;
+            }
+
+        .content-container #categoryScreen {
+            padding: 0 5px;
+        }
+
+        .content-container .classify .pull-left {
+            cursor: text;
+        }
+
+        .content-container .classify li:hover {
+            background-color: #f29042;
+            border-color: #f08200;
+        }
+
+            .content-container .classify li:hover a {
+                color: white;
+            }
+        /*------表格部分------*/
+        input[type=checkBox] {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+            input[type=checkBox]:hover {
+                border: 1px solid #349fff;
+            }
+
+        table > tbody > tr:nth-child(2n+1) {
+            background-color: #f5f5f5;
+        }
+
+        table > tbody > tr:nth-child(n):hover {
+            background-color: #f5f7e1;
+        }
+
+        table th, table td {
+            text-align: center;
+        }
+
+        /*------底部------*/
+        .navbar-fixed-bottom {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background-color: white;
+        }
+
+            .navbar-fixed-bottom .btn {
+                font-size: 16px;
+            }
+
+        .btn-active {
+            background-color: #0e92ce;
+            color: white;
+        }
+        #pageCount{
+            font-size:16px;
+            color:#0e92ce;
+            margin:0 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row top-nav-container">
+            <ul>
+                <li><a href="#">菜品管理</a></li>
+                <li><a href="#">菜品分类</a></li>
+                <li><a href="#">单位管理</a></li>
+            </ul>
+            <div class="warn">
+                <i>
+                    <img src="../static/img/vectorgraph/warning.png" /></i>
+            </div>
+        </div>
+        <div class="row content-container">
+            <div class="col-xs-12 nav-list">
+                <ul class="text-left">
+                    <li><a href="#">已上架菜品</a></li>
+                    <li><a href="#">已下架菜品</a></li>
+                </ul>
+                <div class="nav-list-btn text-right">
+                    <button class="btn">导入菜品</button>
+                    <div class="btn-group" id="myDropdown">
+                        <button class="btn">下载 <span></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">导入模板</a></li>
+                            <li><a href="#">分类模板</a></li>
+                        </ul>
+                    </div>
+                    <form action="/" method="post">
+                        <button id="button3" type="submit" class="btn btn-supplier">导出供应商</button>
+                        <input type="hidden" name="unable" value="0 " />
+                        <input type="hidden" name="daochu" value="1 " />
+                    </form>
+                    <form action="/" method="post">
+                        <button class="btn btn-supplier" id="btnPrint">打印/导出</button>
+                        <input type="hidden" name="act" value=" printall" />
+                        <input type="hidden" name="pspid" id="spid" />
+                        <input type="hidden" name="unable" value=" 0" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-12 dish-menu">
+                <span class="circle"></span>
+                <span>菜品组</span>
+                <a href="#" class="btn pull-right">新增菜品组</a>
+            </div>
+            <div class="col-xs-12 dish-menu">
+                <span class="circle"></span>
+                <span>菜品列表</span>
+                <a href="#" class="btn pull-right">新增菜品</a>
+                <div class="col-xs-4 pull-right">
+                    <form action="/" method="get" class="search-form pull-right">
+                        <i>
+                            <img src="../static/img/vectorgraph/search-ccc.png" /></i>
+                        <input type="text" name="name" value=" " placeholder="请输入编号、名称、品牌、规格" />
+                        <button>搜索</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-12" id="categoryScreen">
+                <div class="classify">
+                    <div class="pull-left btn">一级分类:</div>
+                    <ul>
+                        <li class="btn"><a href="#">全部</a></li>
+                        <li class="btn"><a href="#">蔬菜（净菜）</a></li>
+                        <li class="btn"><a href="#">初级净菜</a></li>
+                        <li class="btn"><a href="#">豆制品类</a></li>
+                        <li class="btn"><a href="#">面食类</a></li>
+                        <li class="btn"><a href="#">水果类</a></li>
+                        <li class="btn"><a href="#">花草类</a></li>
+                        <li class="btn"><a href="#">职工餐</a></li>
+                        <li class="btn"><a href="#">干货调料品</a></li>
+                        <li class="btn"><a href="#">冻品、肉系列</a></li>
+                        <li class="btn"><a href="#">米、面、粮油、蛋、奶系列</a></li>
+                        <li class="btn"><a href="#">海河鲜系列</a></li>
+                        <li class="btn"><a href="#">酒水类</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 content-widget">
+                <div class="panel panel-default table-responsive">
+                    <table class=" table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>序号</th>
+                                <th>菜品编号<label><a href="#"></a><a></a></label></th>
+                                <th>分类</th>
+                                <th>温层 </th>
+                                <th>菜名</th>
+                                <th>品牌</th>
+                                <th>规格</th>
+                                <th>单位</th>
+                                <th>进货价 <small>元</small><label><a href="#"></a><a></a></label></th>
+                                <th>售价<small>元</small><label><a href="#"></a><a></a></label></th>
+                                <th>详细备注</th>
+                                <th>指定供应商</th>
+                                <th>添加时间<label><a href="#"></a><a></a></label></th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                                <td>
+                                    <input type="checkbox" name="name" value=" " />
+                                    <label for="">
+                                        <span></span>
+                                    </label>
+                                </td>
+                                <td>1</td>
+                                <td></td>
+                                <td>蔬菜（净菜）</td>
+                                <td></td>
+                                <td>西兰花块0.5kg/包</td>
+                                <td></td>
+                                <td>1*0.5kg</td>
+                                <td>包</td>
+                                <td>0.00</td>
+                                <td>7.43</td>
+                                <td>有机菜花块宽3-4cm 长5-6cm </td>
+                                <td></td>
+                                <td>2017-02-21 17:49</td>
+                                <td>
+                                    <div class="operation-btn">
+                                        <a href="#"><i></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="pages">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="navbar-fixed-bottom tool-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12" id="oprate">
+                    <input type="checkbox" name="name" value=" " id="checkAll" />
+                    <label for="checkall"></label>
+                    <button id="batchDown" class="btn btn-toggle" disabled="disabled">批量下架</button>
+                    <button class="btn btn-toggle" disabled="disabled">批量修改分类</button>
+                    <span>已选择<span style="color: red" id="checkedCount">0</span>件菜品</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/jQuery%20v3.2.1.min.js"></script>
+    <script>
+
+        //------api接口操作------
+        //method GetPage
+        //obj RecordCnt 记录总数,首次传0; PageIndex 当前页索引,默认为1; PageSize 每页记录数 默认为10
+
+
+        function api(method, obj,callback) {
+            var type
+            var url
+            var obj
+            var getData
+            console.log(type)
+
+            if (method == 'Add' || method == 'Delet') { type = 'post', url = 'http://192.168.1.9:9000/api/SysOperator/' + method;}
+            else if (method == 'GetPage') { type = 'get', url = 'http://192.168.1.9:9000/api/SysOperator/GetPage' }
+            console.log(type)
+
+            $.ajax({
+                type: type,
+                url:url,
+                data: obj + '',
+                contentType: "application/json",
+                success: function (result) {
+                    callback(result)
+                }
+            })
+        }
+
+       api('GetPage', 'PageSize=2', function (data) {
+            console.log(data)
+        })
+
+
+        //------api接口操作------http://192.168.1.9:9000/api/SysOperator/GetPage?PageIndex =5
+        $.get('../../data.txt', function (data) {
+            var thead = dataFormate(data)[0]
+            var tbody = dataFormate(data)[1]
+            addDom(thead, tbody, 10)
+            $('#pages').find('button').eq(0).click()
+            domActive()
+        })
+        //翻译 语言过滤器
+        function langChange(thead, callback) {
+            //这里设置了同步操作,作为语言过滤器其应该能够改变其外层函数作用域的变量
+            //若为异步的话,执行语句时会先跳过该过滤器,这样就达不到效果
+            $.ajaxSetup({
+                async: false
+            })
+            //第一个为编码文件,第二个为翻译文件,两个文件通过数组下标一一对应
+            $.when($.get('../../orgin.txt'), $.get('../../ch1.txt')).done(function (orgData, chData) {
+                var orgData = JSON.parse(orgData[0])
+                var chData=JSON.parse(chData[0])
+                var nthead = []
+                for (var i in thead) {
+                   nthead.push(chData[orgData.indexOf(thead[i])])
+                }
+                callback(nthead)
+            })
+        }
+
+
+
+        //----------数据整理----------
+        function dataFormate(data) {
+            var odata
+            odata=data instanceof Object ? data :  JSON.parse(data)
+            //var odata = JSON.parse(data)
+            //var odata=data.Data||data
+            var thead = []
+            var tbody = []
+            thead = Object.keys(odata[0])
+            //使用语言过滤器
+             langChange(thead, function (e) {
+                thead = e
+                console.log(thead)
+             })
+            console.log(thead)
+             for (var i in odata) {
+                 tbody[i] = []
+                 for (var j in odata[i]) {
+                     //加上0占位
+                     value = !odata[i][j] ? 0 : odata[i][j]
+                     tbody[i].push(value)
+                 }
+             }
+             return [thead, tbody]
+
+
+        }
+
+        //----------根据数据添加dom----------
+        //thead:表头 数组 tbody:表格主体 数组 pageNum每页显示多少数据
+        function addDom(thead, tbody, pageNum) {
+            //确定页数和尾页个数
+
+            var pages = pageCount(tbody.length, pageNum)[0]
+            var remainder = pageCount(tbody.length, pageNum)[1]
+            var tbodys = []
+            if (pages > 1) {
+
+                while (tbody.length != remainder) {
+                    var sub = tbody.splice(0, pageNum)
+                    tbodys.push(sub)
+                }
+
+            }
+
+            //添加分页按钮
+            for (var p = 1; p - 1 < pages; p++) {
+                $('#pages').append($('<button>' + p + '</button>'))
+            }
+
+            //动态添加表头
+            for (var i in thead) {
+                $('table thead tr').append('<th>' + thead[i] + '</th>')
+            }
+            //添加表头固定单元格
+            $('table thead tr').append('<th>操作</th>')
+
+            //给分页按钮添加页面跳转事件事件
+            $('#pages').find('button').click(function () {
+                $('tbody').find('tr').remove()
+                var index = $(this).index()
+                $('#pageCount').remove()
+                $('#pages').append($('<span id=pageCount>第'+(~~index+1)+'页</span>'))
+                if (index + 1 == pages && remainder != 0) {
+                    tbodyDom(tbody)
+                } else {
+
+                    tbodyDom(tbodys[index])
+                }
+                //每更新一次Dom都要激活一次domActive方法
+                checkInput()
+                removeTr()
+            })
+
+            function tbodyDom(tbody) {
+
+                for (var i in tbody) {
+                    var tr = $('<tr></tr>')
+                    //i是字符串,添加序号时使用~~i将i转换为数字再加1
+                    tr.append($('<td><input type="checkbox" name="name" value=" " /><label for=""><span></span></label></td><td>' + (~~i + 1) + '</td>'))
+                    for (var j in tbody[i]) {
+                        if (tbody[i][j] == 0) tbody[i][j] = ''
+                        tr.append($('<td>' + tbody[i][j] + '</td>'))
+                    }
+                    tr.append($('<td class=remove><a style=cursor:pointer>删除</a></td>'))
+                    $('table tbody').append(tr)
+                }
+            }
+
+            //})
+
+        }
+
+        //----------dom交互操作----------
+        function domActive() {
+            toggleAll($('#checkAll'))
+            checkInput()
+            removeTr()
+            batchDown()
+        }
+        //排序 参数 arr:数组  type:(1:升序 2:降序)
+        //注意:该方法会改变原数组的排序
+        function list(arr, type) {
+            if (type == 1) return arr.sort(function (a, b) { return a - b })
+            if (type == 2) return arr.sort(function (a, b) { return b - a })
+        }
+        //统计checkBox被选中的个数
+        function checkedNum() {
+            var input = $('tbody input')
+            var num = 0
+            for (i in input) {
+                if (input.eq(i).prop('checked')) {
+                    num += 1
+                }
+            }
+            return num
+        }
+        //删除选中的行
+        function batchDown() {
+            $('#batchDown').click(function () {
+                $('tbody input').each(function (index, item) {
+                    if ($(item).prop('checked')) $(item).parents('tr').remove()
+                })
+                $('#checkedCount').html(checkedNum())
+                $('.btn-toggle').removeClass('btn-active').prop('disabled', 'true')
+            })
+        }
+        //全选开关
+        function toggleAll(obj) {
+            obj.click(function () {
+                var input = $('tbody input')
+                console.log(obj[0].checked,input)
+                if (obj[0].checked) {
+                    for (i in input) {
+                        input[i].checked = true
+                    }
+                } else {
+                    for (i in input) {
+                        input[i].checked = false
+                    }
+                }
+
+            })
+        }
+
+        //给每个input添加事件,每一个checkBox被点击都要触发一次checkedNum方法
+        function checkInput() {
+            $('input[type=checkBox]').click(function () {
+                $('#checkedCount').html(checkedNum)
+                $('.btn-toggle').removeClass('btn-active')
+                $('.btn-toggle').prop('disabled', 'disabled')
+                if (checkedNum() != 0) {
+                    $('.btn-toggle').addClass('btn-active')
+                    //注意，如果属性设置的值为布尔值，不要加引号
+                    $('.btn-toggle').prop('disabled', false)
+                } else {
+                    //checked属性用attr设置不了,需要用prop
+                    //$('#checkAll').prop('checked', false)
+                }
+            })
+        }
+        //给删除按钮添加方法
+        function removeTr() {
+            $('.remove').click(function () {
+                $(this).parents('tr').remove()
+                $('#checkedCount').html(checkedNum())
+            })
+        }
+        //分页
+        //参数:num 传入的个数 anum 每页的个数
+        //返回值:[页数 最后一页的个数]
+        function pageCount(num, anum) {
+            var pageNum = Math.ceil(num / anum)
+            var remainder = num % anum
+            return [pageNum, remainder]
+        }
+
+
+    </script>
+</body>
+</html>
