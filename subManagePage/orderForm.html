@@ -1,240 +1,759 @@
 <!DOCTYPE html>
-<html lang="en">
-<head runat="server">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title></title>
-  <link href="../static/reset.css" rel="stylesheet" />
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>角色管理</title>
   <link href="../static/Bootstrap%20v3.3.7.css" rel="stylesheet" />
+  <link href="../static/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="../static/select.dataTables.css" rel="stylesheet" />
+  <link href="../static/reset.css" rel="stylesheet" />
+  <link href="../static/bootstrap-dialog%20v1.34.7.min.css" rel="stylesheet" />
+  <link href="../static/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+  <script src="../static/jquery%20v1.12.3.min.js"></script>
+  <script src="../static/jquery.dataTables.min.js"></script>
+  <script src="../static/dataTables.bootstrap.min.js"></script>
+  <script src="../static/dataTables.select.js"></script>
+  <script src="../static/bootstrap%203.3.6.min.js"></script>
+  <script src="../static/bootstrap-contextmenu.js"></script>
+  <script src="../static/bootstrap-dialog%20v1.34.7.min.js"></script>
+  <script src="http://cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+
   <style>
-    a:hover {
-      text-decoration: none;
-    }
-    /*------头部------*/
-    .top-nav-container {
-      background-color: #1f2124;
-      color: white;
+    html {
+      height: 100%;
+      width: 100%;
     }
 
-    .top-nav-container li {
-      float: left;
-      padding: 18.2px 35px;
-      border-top: 5px solid #1f2124;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .top-nav-container li:first-child {
-      border-top: 5px solid #349fff;
-      background-color: white;
-    }
-
-    .top-nav-container li:first-child a {
-      color: black;
-    }
-
-    .top-nav-container li:hover {
-      border-top-color: #349fff;
-      background-color: white;
-    }
-
-    .top-nav-container li:hover a {
-      color: black;
-      text-decoration: none;
-    }
-
-    .top-nav-container li a {
-      color: white;
-    }
-
-    .top-nav-container .warn {
-      position: absolute;
-      right: 30px;
-      top: 5px;
-      width: 16px;
-      height: 16px;
-    }
-
-    .top-nav-container .warn img {
+    html body {
       width: 100%;
       height: 100%;
-      z-index: 999;
-    }
-    /*------头部------*/
-    /*------搜索栏------*/
-    .contant-container .has-feedback {
-      position: relative;
-      width: 95%;
-      height: 40px;
-      margin: 25px 35px;
-      padding: 10px 20px;
-      border: 1px solid #6CB0FB;
-      border-radius: 18px;
       overflow: hidden;
     }
 
-    .contant-container .has-feedback:hover {
-      box-shadow: 0 0 5px #6CB0FB;
+    a {
+      color: black;
+      text-decoration: none;
     }
 
-    .contant-container .has-feedback i {
-      position: absolute;
+    .no-pad {
+      padding: 0px;
+    }
+
+    .panel {
+      height: 100%;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: black;
+    }
+
+    .content {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .fixed-bar {
+      position: fixed;
+      left: 0;
+      top: 30%;
+      margin: auto 0;
+      width: 0px;
+      height: 50px;
+      background-color: #202125;
+      border-radius: 0 5px 5px 0;
+      overflow: hidden;
+      z-index: 12;
+    }
+
+    .fixed-bar i {
+      position: relative;
       display: inline-block;
-      width: 25px;
-      height: 25px;
-      top: 6px;
-      left: 10px;
+      top: 14px;
+      width: 15px;
+      height: 15px;
     }
 
-    .contant-container .has-feedback i img {
+    .fixed-bar i img {
       width: 100%;
       height: 100%;
     }
 
-    .contant-container .has-feedback input {
+    .content-left, .content-right {
       position: absolute;
       display: inline-block;
-      width: 90%;
-      height: 25px;
-      border: none;
-      outline: none;
-      top: 6px;
-      left: 50px;
+      box-sizing: border-box;
+      height: 10000px;
+      border: 1px solid black;
     }
 
-    .contant-container .has-feedback button {
+    .content-left {
+      width: 480px;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .content-left .panel-body {
+      overflow: hidden;
+      text-wrap: none;
+      white-space: nowrap;
+    }
+
+    .drag-bar {
       position: absolute;
+      display: inline-block;
+      width: 3px;
+      height: 10000px;
+      background-color: #222;
+      left: 479px;
+      border: 1px solid #333;
+      border-radius: 10px;
+      cursor: col-resize;
+      z-index: 11;
+    }
+
+    .drag-bar:hover {
+      background-color: #ccc;
+    }
+
+    .content-right {
+      box-sizing: border-box;
+      width: 100%;
       top: 0;
       right: 0;
-      height: 40px;
-      width: 200px;
-      border: none;
-      background-color: #6CB0FB;
-      color: white;
-      transition: all 0.5s ease-in-out;
+      padding-left: 480px;
     }
 
-    .contant-container .has-feedback button:hover {
-      background-color: #0e92ce;
+    .panel-heading {
+      background-color: #202125;
     }
-    /*------搜索栏------*/
-    /*------打印------*/
-    .btn-print {
+
+    .panel-heading .layout-button-left i {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
       float: right;
-      width: 90px;
-      height: 38px;
-      line-height: 28px;
-      margin: 5px 50px;
-      padding: 6px 12px;
-      color: white;
-      background-color: #6CB0FB;
-      border: none;
+    }
+
+    .panel-heading .panel-title {
+      color: #88c64b;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .panel-heading .layout-button-left i img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .tab-content .tabs li {
+      display: inline-block;
+      padding: 15px;
+      margin-right: 10px;
+      border: 1px solid rgba(28, 146, 154, 0.14);
       border-radius: 5px;
     }
 
-    .btn-print:hover {
-      color: black;
-    }
-    /*------打印------*/
-    /*------订单信息------*/
-    .nav-lis {
-      margin: 10px 0;
+    .tab-panel .panel-body .tblCondition {
     }
 
-    .nav-lis ul {
-      overflow: hidden;
-      border-bottom: 2px solid #ccc;
+    .tab-panel .panel-body .tblCondition tr {
+      height: 35px;
+      line-height: 25px;
+      margin-bottom: 10px;
+      text-align: right;
     }
 
-    .nav-lis ul li {
+    .tab-panel .panel-body .tblCondition th {
+      padding-right: 30px;
+      font-size: 18px;
+      text-align: right;
+    }
+
+    .tab-panel .panel-body .tblCondition .textbox-text {
+      border: 1px solid rgba(44, 194, 134, 0.36);
+      border-radius: 7px;
+      width: 250px;
+    }
+
+    .datagrid-toolbar {
+      margin-bottom: 30px;
+    }
+
+    .datagrid-toolbar li {
       display: inline-block;
-      float: left;
-      padding: 10px 0;
-      font-size: 15px;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid rgba(122, 186, 143, 0.65);
+      border-radius: 6px;
     }
 
-    .nav-lis ul li:last-child {
-      float: right;
-      margin: 0 50px;
+    .datagrid-toolbar li:hover {
+      background-color: #b4d8b3;
     }
 
-    .nav-lis ul li:last-child i {
+    .datagrid-toolbar i {
       position: relative;
       display: inline-block;
-      width: 16px;
-      height: 16px;
-      top: -3px;
-      left: -8px;
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+      top: -2px;
     }
 
-    .nav-lis ul li:last-child i img {
+    .datagrid-toolbar i img {
       width: 100%;
       height: 100%;
     }
-
-    .nav-lis ul li:first-child {
-      border-bottom: 2px solid #00a0e9;
+    /*模态框*/
+    .input-group {
+      margin: 15px 0;
     }
 
-    .nav-lis ul li a {
-      color: black;
-      padding: 0 25px;
+    .input-group span {
+      padding: 0 20px;
     }
 
-    .nav-lis ul li:first-child a {
-      color: #00a0e9;
-    }
-
-    .nav-lis ul li:not(:last-child) a {
-      border-right: 1px solid #ccc;
-    }
-
-    .nav-lis ul li a:hover {
-      color: #00a0e9;
-    }
-
-    .nav-lis ul li a span {
-      color: red;
-    }
+    /*datatable*/
+    /*#datatable tbody tr:hover {
+        background-color: #ccc;
+    }*/
   </style>
 </head>
 <body>
-<div class="container-fluid">
-  <div class="row top-nav-container">
-    <ul>
-      <li><a href="#">我的订单</a></li>
-      <li><a href="#">已合并的订单</a></li>
-    </ul>
-    <div class="warn">
-      <img src="../static/img/vectorgraph/warning.png" />
-    </div>
+<div class="content">
+  <!--@*伸缩按钮*@-->
+  <div class="fixed-bar">
+    <a href="javascript:void(0)" title="查询条件"><i><img src="../static/img/vectorgraph/arrow-right-88c64b.png" /> </i></a>
   </div>
-</div>
-<div class="row contant-container">
-  <div class="col-xs-12">
-    <form method="post" action="#">
-      <div class="has-feedback">
-        <i>
-          <img src="../static/img/vectorgraph/search.png" />
+  <div class="panel content-left ">
+    <div class="panel-heading">
+      <span class="panel-title">查询条件</span>
+      <span class="panel-tool"><a href="javascript:void(0)" class="layout-button-left"><i><img src="../static/img/vectorgraph/arrow-left.png" /></i></a></span>
+    </div>
+    <div class="panel-body">
+      <div class="tab-content">
+        <div class="tabs-header">
+          <div class="tabs-wrap">
 
-        </i>
-        <input type="text" name="name" placeholder="请输入订单号查询..." />
-        <button>搜索</button>
+          </div>
+        </div>
+        <div class="tab-panel">
+          <div class="panel">
+            <div class="panel-body" style="">
+              <table class="tblCondition">
+                <tbody>
+                <tr><th>角色名称:</th><td><input style="display:none" /><span class="textbox"><input type="text" class="textbox-text" placeholder="查询条件" /><input type="hidden" class="textbox-value" /></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
-    <div class="col-xs-12">
-      <button class="btn-print btn-blue">打印/导出</button>
     </div>
-    <div class="col-xs-12 nav-lis">
-      <ul>
-        <li><a href="#">待接单<span>0</span></a></li>
-        <li><a href="#">待发货<span>0</span></a></li>
-        <li><a href="#">待确认<span>0</span></a></li>
-        <li><a href="#">所有订单</a></li>
-        <li><a href="#"><i>
-          <img src="../static/img/vectorgraph/recycle.png" /></i>订单回收站</a></li>
-      </ul>
+  </div>
+  <div class="drag-bar" id="drag-bar"></div>
+  <div class=" panel content-right ">
+    <div class="panel-heading">
+      <div class="panel-title">角色列表</div>
+      <div class="panel-tool"></div>
+    </div>
+    <div class="panel-body">
+      <div class="panel datagrid">
+        <div class="datagrid-wrap panel-body ">
+          <div class="">
+            <!--@*data-toggle='context'加上右键功能*@-->
+            <table id="datatable" class="table table-striped table-bordered" >
+
+            </table>
+          </div>
+          <!--@*右键菜单*@-->
+          <div id="context">
+            <ul class="dropdown-menu" role="menu" style="cursor:pointer">
+              <li><a tabindex="-1" id="targetAdd">添加</a></li>
+              <li><a tabindex="-1" id="targetEdit" >编辑</a></li>
+              <li><a tabindex="-1" id="targetDel">删除</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" id="targetSearch">查询</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  //初始化数据
+  var data = []
+  var salarys = ['A', 'B', 'C', 'D', 'E']
+  //console.log(name)//right-content 在ifram子页面不要用name作为变量,否则会导致ifram的name属性失效
+  var test = '拼音模糊查询测试'
+  var nameArry = test.split('')
+  for (var i = 0; i < 1500; i++) {
+    var addobj = {
+      "id": i,
+      "name": nameArry[i % 8],
+      "position": "192.168.1.1" + i,
+      "salary": salarys[i % 5]
+    }
+    data.push(addobj)
+  }
+
+  var options = []
+  var departments=['财务部','营销部','行政部','人事部','技术部']
+  for (var i = 0; i < 5; i++) {
+    var addOption = {
+      id: i,
+      department: departments[i]
+    }
+    options.push(addOption)
+  }
+  //简单的后台逻辑
+  var config = [
+    {
+      url: '/option',
+      responseText:options
+    },
+    {
+      url: '/initData',
+      responseText: data
+    },
+    {
+      url: '/add.jsp',
+      response: function (getobj) {
+        console.log(getobj)
+        if (!getobj.data.id) {//添加
+          getobj.data.id = data.length
+          data.unshift(getobj.data)
+        } else {
+          for (var i in data) {//编辑
+            if (getobj.data.id == data[i].id) {
+              data.splice(i, 1, getobj.data)
+
+            }
+          }
+        }
+      }
+    },
+    {
+      url: '/del.jsp',
+      response: function (getdel) {
+        for (var i in data) {
+          if (data[i].id == getdel.data.id) {
+            data.splice(i, 1)
+          }
+        }
+        this.responseText = getdel
+      }
+    }
+  ]
+  //使用mockjax响应ajax请求
+  for (var i = 0; i < config.length; i++) {
+    $.mockjax(config[i])
+  }
+</script>
+<script>
+  var table;
+  $(function () {
+    table = $('#datatable').DataTable({
+      //data: data,
+      ajax: {
+        url: '/initData',
+        dataSrc: ''
+      },
+      select: {
+        'style': 'os',
+        items: 'row'
+      },
+      aLengthMenu: [5, 8, 10],
+      columns: [
+        {
+          "data": null,
+          "title": '<input id=checkAll type=checkbox style=margin-right:15px>'+"批量选择"
+        },
+        {
+          "data": "name",
+          "title": "姓名"
+        },
+        {
+          "data": "position",
+          "title": "地点"
+        },
+        {
+          "data": "salary",
+          "title": "薪水"
+        },
+      ],
+      columnDefs: [
+        {
+          targets: 0,
+          render: function (a, b, c, d) {
+            //使用data-*传值
+            var html = '<input type=checkbox class=check data-checked=' + JSON.stringify(c) + '>'
+            return html
+          }
+        }
+      ],
+      "language": {
+        "lengthMenu": "_MENU_ 条记录每页",
+        "zeroRecords": "没有找到记录",
+        "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+        "infoEmpty": "无记录",
+        "infoFiltered": "(从 _MAX_ 条记录过滤)",
+        "search": '搜索',
+        "paginate": {
+          "previous": "上一页",
+          "next": "下一页"
+        }
+      },
+      //表格布局
+      "dom": "<'row'<'#mytool.col-xs-6'><'col-xs-6'>r>t<'row'<'col-xs-6'l><'col-xs-6'p>>",
+      //功能按钮
+      initComplete: function () {
+        //给每一行添加右键功能
+        var tr = $('tbody').find('tr')
+        //插件所需属性,给每一行添加右键菜单
+        tr.attr({ 'data-toggle': 'context', 'data-target': '#context' })
+        //给右键菜单选项添加事件
+        tr.contextmenu({
+          target: '#context',
+          onItem: function (context, e) {
+            var target = $(e.target)
+            var dom = this.$element
+            //给选定的dom添加id,便于datatableApi操作
+            dom.attr('id', 'selected')
+            switch (target.prop('id')) {
+              case 'targetAdd':
+                console.log('targetAdd')
+                openDialog({data:{label:'添加'}})
+                break;
+              case 'targetEdit':
+                console.log('edit')
+                break;
+              case 'targetDel':
+                del([table.rows({ id: 'selected' }).data()[0]])
+                break;
+            }
+            //事件结束后移除id
+            dom.attr('id', '')
+            dom.css('color', 'red')
+            //this.$element[0].style.color='red'
+          }
+        });
+
+        $('#checkAll').on('click', function () {//批量选择
+          var checkBox = $('.check')
+          checkBox.prop('checked',this.checked)
+        })
+        $("#mytool").append('<button id=append type="button" class="btn btn-primary btn-sm" style="margin-right:15px" >添加</button>'
+          + '<button id=edit type="button" class="btn btn-primary btn-sm" style="margin-right:15px" >编辑</button>'
+          + '<button id=search type="button" class="btn btn-primary btn-sm" style="margin-right:15px" >查询</button>'
+          + '<button id=delSelected type="button" class="btn btn-danger btn-sm" >删除选中数据</button>'
+        );
+        $('#append').on('click', function () {//打开空的模态框
+          openDialog({
+            data: { label: '添加' },
+            buttons: [
+              {
+                label: '保存',
+                action: function (dialog) {
+                  add(dialog)
+                },//添加事件
+              },
+              {
+                label: '关闭',
+                action: function (dialog) {
+                  dialog.close()
+                }
+              }
+            ],
+          })
+        })
+        $('#delSelected').on('click', function () {//批量删除数据
+          if (!!$('.check:checked')[0]) {//多选框优先判断,若同时存在多选按钮和单行选择，以多选框为准
+            var selected = $('.check:checked')
+            var arr = []
+            for (var i = 0; i < selected.length; i++) {
+              var obj = JSON.parse(selected.eq(i).attr('data-checked'))
+              arr[i] = obj
+            }
+            del(arr)
+          } else {
+            del([table.rows({ selected: true }).data()[0]])
+          }
+        })
+        $('#edit').on('click', function () {
+          var selectedData = table.rows({ selected: true }).data()[0]
+          if (!selectedData) { alert('请选择一条数据') }
+          openDialog({
+            data: { label: '编辑', name: selectedData.name, position: selectedData.position, salary: selectedData.salary, id: selectedData.id },
+            buttons: [
+              {
+                label: '保存',
+                action: function (dialog) {
+                  add(dialog)
+                },//添加事件
+              },
+              {
+                label: '关闭',
+                action: function (dialog) {
+                  dialog.close()
+                }
+              }
+            ],
+          })
+        })
+        $('#search').on('click', function () {
+          openDialog({
+            title: '查询',
+            data: { label: '查询' },
+            buttons: [
+              {
+                label: '查询',
+                action: function (dialog) {
+                  search(dialog)
+                },//添加事件
+              },
+              {
+                label: '关闭',
+                action: function (dialog) {
+                  dialog.close()
+                }
+              }
+            ],
+          })
+        })
+      }
+
+    });
+  });
+
+
+
+  //生成模态框添加的html
+  var message = function () {
+    //同步获取数据
+    var optionData = $.ajax({
+      url:'/option',
+      async: false,
+      success: function (data) {
+        return data
+      }
+    }).responseText
+    console.log(JSON.parse(optionData))
+    optionData = JSON.parse(optionData)
+    var dom = $('<div class="input-message">'
+      + '<div class="input-group input-group-sm ">'
+      + '<span>姓名</span><select style=width:175px id="name" type="text"  value=" "><option selected=selected>拼</option></select>'
+      + '</div>'
+      + '<div class="input-group input-group-sm">'
+      + '<span>地点</span><input id="position" type="text" name="name" value=" " />'
+      + '</div>'
+      + '<div class="input-group input-group-sm">'
+      + '<span>薪水</span><input id="salary" type="text" name="name" value=" " />'
+      + '</div>'
+      + '<div class="input-group input-group-sm">'
+      + '<span></span><input id="id" type="hidden"  value=" " />'
+      + '</div>'
+      + '</div> ')
+    for (var i in optionData) {
+      var optionDom = $('<option value=' + optionData[i].department + ' data-id=' + optionData[i].id + '>' + optionData[i].department + '</option>')
+      dom.find('#name').append(optionDom)
+    }
+
+    return dom
+  }
+  //模态框默认设置
+  var setting = {
+    title: '',
+    autodestroy: true,
+    message: message,//传入dom对象
+    draggable: true,
+    onshow: function (dialog) {
+      //修改dialog头部名字
+      dialog.getModalHeader().find('.bootstrap-dialog-title').html(this.data.label)
+      //找到对应节点赋值
+      var content = dialog.getModalContent()
+      content.find('#name').val(this.data.name)
+      content.find('#position').val(this.data.position)
+      content.find('#salary').val(this.data.salary)
+      content.find('#id').val(this.data.id)
+    },
+    buttons: [
+      {
+        label: '保存',
+        action: function (dialog) {
+          add(dialog)
+        },//添加事件
+      },
+      {
+        label: '关闭',
+        action: function (dialog) {
+          dialog.close()
+        }
+      }
+    ],
+    data: {
+      label: '',
+      name: '',
+      position: '',
+      salary: '',
+      id: '',
+    }
+  }
+
+  /**
+   * 点击保存后模态框初始化
+   */
+  function clear() {
+    $("#name").val("").attr("disabled", false);
+    $("#position").val("");
+    $("#salary").val("");
+    editFlag = false;
+  }
+
+  //打开模态框，传入自定义设置
+  function openDialog(obj) {
+    var temp=JSON.parse(JSON.stringify(setting))
+    $.extend(setting, obj)
+    //setting.data.label = title
+    var dialog = new BootstrapDialog(setting)
+    dialog.open()
+  }
+  /**
+   * 添加数据
+   **/
+  function add(dialog) {
+    var method = 'add'
+    //获取模态框的值
+    var addJson = {
+      'id': $('#id').val(),
+      "name": $("#name").val(),
+      "position": $("#position").val(),
+      "salary": $("#salary").val(),
+    };
+    ajax(addJson, method);
+    dialog.close()
+  }
+
+  //多条件查询数据
+  function search(dialog) {
+    var name = $('#name').val()
+    var position = $('#position').val()
+    var salary = $('#salary').val()
+    table
+      .column(1)
+      .search(name)
+      .column(2)
+      .search(position)
+      .column(3)
+      .search(salary)
+      .draw();
+    dialog.close()
+  }
+
+  /**
+   * 删除数据
+   **/
+  function del(name, position, salary, id) {
+    var method = 'del'
+    if (arguments[0] instanceof Array) {
+      var arr = arguments[0]
+      BootstrapDialog.confirm({
+        title: 'WARNING',
+        message: '是否删除选中数据',
+        type: BootstrapDialog.TYPE_WARNING,
+        closable: true,
+        draggable: true,
+        btnOKLabel: '否',
+        btnCancelLabel: '是',
+        callback: function (r) {
+          if (!r) {//对应于'是'
+            for (var i in arr) {
+              var addJson = {
+                "id": arr[i].id,
+                "name": arr[i].name,
+                "position": arr[i].position,
+                "salary": arr[i].salary,
+              }
+              ajax(addJson, method)
+            }
+          }
+        }
+      })
+    } else {
+      var addJson = {
+        "id": id,
+        "name": name,
+        "position": position,
+        "salary": salary,
+      }
+      BootstrapDialog.confirm({
+        title: 'WARNING',
+        message: '是否删除该条数据',
+        type: BootstrapDialog.TYPE_WARNING,
+        closable: true,
+        draggable: true,
+        btnOKLabel: '否',
+        btnCancelLabel: '是',
+        callback: function (r) {
+          if (!r) {
+            ajax(addJson, method)
+          }
+        }
+      })
+    }
+
+  }
+
+
+  /**
+   *编辑方法
+   **/
+  function edit(name, position, salary, id) {
+    var method = 'edit'
+    //将数据传给模态框
+    openDialog({ data: { label: '修改', name: name, position: position, salary: salary, id: id } })
+  }
+
+  function ajax(obj, method) {
+    var url
+    method === 'add' && (url = "/add.jsp")
+    method === 'edit' && (url = "/edit.jsp")
+    method === 'del' && (url = "/del.jsp")
+    console.log(url)
+    $.ajax({
+      url: url,
+      data: obj,
+      success: function (data) {
+        table.ajax.reload();
+        $("#myModal").modal("hide");
+        $("#myModalLabel").text("新增");
+        clear();
+        $('#checkAll').prop('checked', false)
+        console.log("结果" + data);
+      }
+    });
+  }
+  $('#datatable').width('100%')
+
+
+  + function () {
+    var flag = true;
+    $('.layout-button-left,.fixed-bar').on('click', function () {
+      flag && $('.drag-bar').hide()
+      !flag && $('.content-left').show()
+      flag && $('.content-right').animate({ 'padding-left': '0' }, 300, function () { flag = false; $('.fixed-bar').animate({ 'width': '15px' }, 'fast'); $('.content-left').hide() });
+      !flag && $('.content-right').animate({ 'padding-left': '480px' }, 450, 'swing', function () { flag = true; $('.fixed-bar').animate({ 'width': '0' }, 'fast'); $('.drag-bar').show() })
+      flag && $('.content-left').animate({ 'width': '0' }, 450, 'swing', function () { flag = false });
+      !flag && $('.content-left').animate({ 'width': '480px' }, 300, function () { flag = true });
+    })
+  }()
+</script>
 </body>
 </html>
